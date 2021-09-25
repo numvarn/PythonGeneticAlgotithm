@@ -4,11 +4,8 @@ import matplotlib.pyplot as plt
 
 
 # Create coordinates
-city = 10
+city = 20
 coords = np.random.rand(city, 2) * 2
-
-X = [x[0] for x in coords]
-Y = [y[1] for y in coords]
 
 last_fitness = 0
 
@@ -86,12 +83,13 @@ def plotGraph(solution):
 
 # Configure GA
 num_generations = 300
-num_parents_mating = 10  # city
+num_parents_mating = 20  # city
 sol_per_pop = 100  # Number of solutions in each generation
 num_genes = city
 gene_type = [int] * num_genes
 keep_parents = 10
 
+# Selection method
 parent_selection_type = "sss"
 
 # user defined crossover function
@@ -125,8 +123,8 @@ print("\nInitialize Population")
 print(ga_instance.initial_population)
 print("\n---------------\n\n")
 
+# Start GA
 ga_instance.run()
-ga_instance.plot_fitness()
 
 # Returning the details of the best solution.
 solution, solution_fitness, solution_idx = ga_instance.best_solution(
@@ -139,4 +137,5 @@ print("Fitness value of the best solution = {solution_fitness}".format(
 print("Index of the best solution : {solution_idx}".format(
     solution_idx=solution_idx))
 
+ga_instance.plot_fitness()
 plotGraph(solution)
